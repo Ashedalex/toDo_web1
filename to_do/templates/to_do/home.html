@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To do app</title>
+    <style>
+        table, th, tr{
+            border: 1px solid white;
+            border-collapse: separate;
+           
+        }
+        th, td{
+            padding: 9px;
+            border-spacing: 15px 50px;
+            background-color: rgb(156, 228, 204);
+        }
+    </style>
+</head>
+<body>
+    <h1> To Do List</h1>
+    <div style = "display: flex; justify-content: center;">
+
+    <table>
+        <tr>
+            <td style = "column-width: 2em;"> Task </td>
+            <td> Due date </td>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            {% for data in task %}
+            <td>{{ data }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div style = "display: flex; justify-content: center;">
+    <br>
+    <br>&nbsp;
+    <p> Add Task
+        <form action="{% url 'home' %}" method="get">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Add Task</button>
+        </form>
+</div>
+</body>
+</html> 
